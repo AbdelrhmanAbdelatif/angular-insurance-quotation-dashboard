@@ -88,7 +88,11 @@ export class QuotationsStore {
 
   search(searchTerm: string): void {
     const normalizedTerm = searchTerm.trimStart();
-    this.queryState.update((query) => ({ ...query, searchTerm: normalizedTerm }));
+    this.queryState.update((query) => ({
+      ...query,
+      searchTerm: normalizedTerm,
+      searchLanguage: this.i18n.language(),
+    }));
     this.searchRequests.next(normalizedTerm);
   }
 

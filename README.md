@@ -201,3 +201,14 @@ Move search, filtering, sorting, and pagination to the server and request only t
 ### Module Federation, Native Federation, or neither
 
 For this application, neither is appropriate: it is a small cohesive feature and federation would add deployment, versioning, runtime-integrity, and shared-dependency complexity. Consider Module Federation when independently deployed teams need mature Webpack-based runtime composition. Consider Native Federation when standards-based ESM delivery and modern Angular tooling are strategic requirements. In either case, the organizational need for independent release ownership should come before the technical mechanism.
+
+ ## deployment gh-pages comands 
+
+ ```bash
+ ng build --base-href /angular-insurance-quotation-dashboard/
+
+npx gh-pages -d dist/quotation-dashboard/browser -b gh-pages
+```
+## Live deployment dashboard
+
+open `https://abdelrhmanabdelatif.github.io/angular-insurance-quotation-dashboard/quotations?utm_source=chatgpt.com`

@@ -111,6 +111,7 @@ export class MockQuotationsApiService implements QuotationsApi {
   search(query: QuotationQuery): Observable<readonly Quotation[]> {
     // defer starts latency and scenario evaluation per subscription, which makes retry realistic.
     const term = query.searchTerm.trim().toLowerCase();
+    const customerName = query.searchLanguage === 'ar' ? 'customerNameAr' : 'customerName';
     const latency = term.includes('slow') ? 900 : term.includes('fast') ? 120 : 320;
 
     return defer(() => timer(latency).pipe(
@@ -128,8 +129,7 @@ export class MockQuotationsApiService implements QuotationsApi {
           map((quotations) => quotations.filter((quotation) =>
             term.length === 0 ||
             quotation.id.toLowerCase().includes(term) ||
-            quotation.customerName.toLowerCase().includes(term) ||
-            quotation.customerNameAr.toLowerCase().includes(term),
+            quotation[customerName].toLowerCase().includes(term),
           )),
         );
       }),
