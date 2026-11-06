@@ -1,0 +1,23 @@
+@use '../abstracts' as *;
+
+.footer-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-6 .1rem 0;
+  color:  $brand-navy;
+  font-size: $font-size-md;
+  background-color: $header-footer-bg;
+  border-radius: $radius-pill;
+  padding: 1rem;
+  font-weight: bold;
+  margin-top: 1.5rem;  
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .footer-note {
+    align-items: start;
+    flex-wrap: wrap;
+  }
+}

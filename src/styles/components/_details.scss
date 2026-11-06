@@ -1,0 +1,168 @@
+@use '../abstracts' as *;
+
+.details {
+  min-height: 100%;
+  display: grid;
+  align-content: start;
+  gap: $space-5;
+
+  h2 {
+    margin: .15rem 0 0;
+    color: $ink;
+    font-size: 1.25rem;
+  }
+
+  &__header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: $space-5;
+  }
+
+  &__customer {
+    display: flex;
+    gap: $space-4;
+    align-items: center;
+
+    div {
+      display: grid;
+      gap: .2rem;
+    }
+
+    span:last-child {
+      color: $muted;
+      font-size: $font-size-sm;
+    }
+  }
+
+  &__hero {
+    border-radius: $radius-lg;
+    background: linear-gradient(135deg, $brand-navy, #07516e);
+    color: white;
+    padding: $space-6;
+    display: grid;
+    gap: .2rem;
+
+    span {
+      opacity: .72;
+      font-size: $font-size-sm;
+    }
+
+    strong {
+      font-size: 1.9rem;
+      letter-spacing: -.04em;
+    }
+
+    small {
+      font-size: .8rem;
+      opacity: .72;
+    }
+
+    p {
+      margin: .3rem 0 0;
+      opacity: .68;
+      font-size: $font-size-xs;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .9rem;
+    margin: 0;
+
+    div {
+      border-bottom: 1px solid $line;
+      padding-bottom: $space-3;
+    }
+
+    dt {
+      color: $muted;
+      font-size: .7rem;
+    }
+
+    dd {
+      margin: .3rem 0 0;
+      color: $ink;
+      font-size: .82rem;
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  &__note {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    margin: 0;
+    color: $success;
+    font-size: $font-size-xs;
+    font-weight: 750;
+
+    span {
+      display: grid;
+      place-items: center;
+      width: 1.1rem;
+      height: 1.1rem;
+      border-radius: 50%;
+      background: $success-soft;
+    }
+  }
+
+  &__empty {
+    min-height: 18rem;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    text-align: center;
+    padding: $space-8;
+    color: $muted;
+
+    h2 {
+      margin: .8rem 0 .4rem;
+      font-size: 1rem;
+    }
+
+    p {
+      max-width: 18rem;
+      margin: 0;
+      line-height: 1.6;
+      font-size: .8rem;
+    }
+  }
+
+  &__empty-icon {
+    display: grid;
+    place-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: $radius-lg;
+    background: $brand-soft;
+    color: $brand-teal;
+    font-size: 2rem;
+  }
+}
+
+.status {
+  border-radius: $radius-pill;
+  background: $success-soft;
+  color: $success;
+  padding: .3rem $space-2;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+
+  &--expired {
+    background: $warning-soft;
+    color: $warning;
+  }
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: $brand-navy;
+  color: white;
+  font-weight: $font-weight-bold;
+}

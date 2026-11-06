@@ -1,0 +1,23 @@
+@use '../abstracts' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: $page;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}

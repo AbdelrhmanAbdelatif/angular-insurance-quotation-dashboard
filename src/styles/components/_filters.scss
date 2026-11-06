@@ -1,0 +1,106 @@
+// @use '../abstracts' as *;
+
+// .filters {
+//   display: grid;
+//   grid-template-columns: repeat(2, minmax(0, 1fr));
+//   gap: $space-3;
+
+//   h2 {
+//     grid-column: 1 / -1;
+//     margin: 0;
+//     color: $ink;
+//     font-size: .85rem;
+//   }
+
+//   label {
+//     display: grid;
+//     gap: $space-1;
+//   }
+
+//   label span {
+//     color: $muted;
+//     font-size: $font-size-xs;
+//     font-weight: $font-weight-semibold;
+//   }
+
+//   select {
+//     width: 100%;
+//     border: 1px solid $line;
+//     border-radius: $radius-sm;
+//     background: $surface;
+//     color: $ink;
+//     padding: .72rem $space-3;
+//     font: inherit;
+//     outline: none;
+
+//     &:focus {
+//       @include focus-ring;
+//     }
+//   }
+// }
+
+@use '../abstracts' as *;
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-3;
+
+  h2 {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: $ink;
+    font-size: .85rem;
+  }
+
+  label {
+    display: grid;
+    gap: $space-1;
+    min-width: 0;
+  }
+
+  label > span {
+    color: $muted;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+  }
+
+  .select-wrapper {
+    position: relative;
+    width: 100%;
+
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+
+      width: 100%;
+      border: 1px solid $line;
+      border-radius: $radius-sm;
+      background: $surface;
+      color: $ink;
+
+      padding: .72rem 2.5rem .72rem $space-3;
+
+      font: inherit;
+      outline: none;
+      cursor: pointer;
+
+      &:focus {
+        @include focus-ring;
+      }
+    }
+
+    .select-arrow {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      border-right: 1.5px solid $muted;
+      border-bottom: 1.5px solid $muted;
+      transform: translateY(-70%) rotate(45deg);
+      pointer-events: none;
+    }
+  }
+}

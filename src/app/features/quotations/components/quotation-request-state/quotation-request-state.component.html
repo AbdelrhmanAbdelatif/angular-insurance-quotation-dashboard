@@ -1,0 +1,7 @@
+@if (state.status === 'loading') {
+  <div class="message message--loading" role="status"><span class="spinner" aria-hidden="true"></span><div><strong>{{ i18n.t('loadingTitle') }}</strong><p>{{ i18n.t('loadingMessage') }}</p></div></div>
+} @else if (state.status === 'error') {
+  <div class="message message--error" role="alert"><span class="message__icon" aria-hidden="true">!</span><div><strong>{{ i18n.t('errorTitle') }}</strong><p>{{ state.message }}</p><button type="button" (click)="retry.emit()">{{ i18n.t('tryAgain') }}</button></div></div>
+} @else if (empty) {
+  <div class="message message--empty"><span class="message__icon" aria-hidden="true">⌕</span><div><strong>{{ i18n.t('emptyTitle') }}</strong><p>{{ i18n.t('emptyMessage') }}</p></div></div>
+}

@@ -1,0 +1,17 @@
+<section class="search" aria-labelledby="quotation-search-title">
+  <div class="search__label-row">
+    <label id="quotation-search-title" for="quotation-search-input">{{ i18n.t('searchLabel') }}</label>
+    <span>{{ i18n.t('searchHint') }}</span>
+  </div>
+  <div class="search__input-wrap">
+    <span class="search__icon" aria-hidden="true">⌕</span>
+    <input
+      id="quotation-search-input"
+      type="search"
+      [value]="value"
+      (input)="onInput($event)"
+      [placeholder]="i18n.t('searchPlaceholder')"
+      autocomplete="off"
+    />
+  </div>
+</section>

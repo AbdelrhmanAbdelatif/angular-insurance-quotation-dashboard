@@ -1,0 +1,16 @@
+<section class="list" aria-labelledby="quotation-list-title">
+  <div class="list__heading">
+    <div><p class="eyebrow">{{ i18n.t('matchingRecords') }}</p><h2 id="quotation-list-title">{{ i18n.t('quotations') }}</h2></div>
+    <span>{{ quotations.length }} {{ quotations.length === 1 ? i18n.t('result') : i18n.t('results') }}</span>
+  </div>
+  <div class="list__items">
+    <!-- Tracking by the stable quotation ID avoids recreating rows during sort/filter changes. -->
+    @for (quotation of quotations; track quotation.id) {
+      <app-quotation-list-item
+        [quotation]="quotation"
+        [selected]="quotation.id === selectedId"
+        (selectedChange)="quotationSelected.emit($event)"
+      />
+    }
+  </div>
+</section>

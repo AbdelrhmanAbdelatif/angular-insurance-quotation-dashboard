@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+.dashboard-shell {
+  width: min(1440px, 100%);
+  margin: 0 auto;
+  padding: 0 $space-9 $space-8;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .dashboard-shell {
+    padding-inline: $space-5;
+  }
+}

@@ -1,0 +1,38 @@
+@use '../abstracts' as *;
+
+.list {
+  display: grid;
+  gap: $space-5;
+
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: $space-5;
+
+    h2 {
+      margin: .15rem 0 0;
+      color: $ink;
+      font-size: 1.1rem;
+    }
+
+    > span {
+      color: $muted;
+      font-size: $font-size-xs;
+    }
+  }
+
+  &__items {
+    display: grid;
+    gap: $space-2;
+  }
+}
+
+.eyebrow {
+  margin: 0;
+  color: $brand-teal;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}

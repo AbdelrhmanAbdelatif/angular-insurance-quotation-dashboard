@@ -1,0 +1,101 @@
+@use '../abstracts' as *;
+
+.topbar {
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $line;
+  background-color: $header-footer-bg;
+  border-radius: $radius-pill;
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  color: $brand-navy;
+  text-decoration: none;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-heavy;
+  letter-spacing: -.04em;
+
+  &__mark {
+    display: grid;
+    place-items: center;
+    width: 1.85rem;
+    height: 1.85rem;
+    border-radius: .55rem .55rem .55rem .2rem;
+    background: $brand-teal;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  small {
+    color: $brand-teal;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0;
+  }
+}
+
+.topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.topbar__context {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  color: $muted;
+  font-size: $font-size-xs;
+}
+
+.topbar__dot {
+  width: .45rem;
+  height: .45rem;
+  border-radius: 50%;
+  background: $brand-lime;
+  box-shadow: 0 0 0 4px rgba(181, 211, 50, .16);
+}
+
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  border: 1px solid $line;
+  border-radius: $radius-pill;
+  background: $surface;
+  color: $brand-navy;
+  padding: $space-2 $space-3;
+  font: inherit;
+  font-size: $font-size-xs;
+  font-weight: 750;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $brand-teal;
+    color: $brand-teal;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .topbar {
+    min-height: 4.25rem;
+  }
+
+  .brand small,
+  .topbar__context {
+    display: none;
+  }
+
+  .language-switch {
+    padding: .45rem $space-3;
+  }
+}

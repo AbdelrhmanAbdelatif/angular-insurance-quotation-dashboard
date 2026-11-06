@@ -1,0 +1,14 @@
+<header class="topbar">
+  <!-- Text-based branding keeps the shared header crisp and accessible in both locales. -->
+  <a class="brand" href="/" [attr.aria-label]="i18n.t('brandName') + ' ' + i18n.t('dashboardTitle')">
+    <span class="brand__mark" aria-hidden="true">b</span>
+    <span>{{ i18n.t('brandName') }}</span>
+    <small>{{ i18n.t('brandArabic') }}</small>
+  </a>
+  <div class="topbar__actions">
+    <!-- <span class="topbar__context"><span class="topbar__dot"></span>{{ i18n.t('supportWorkspace') }}</span> -->
+    <button class="language-switch" type="button" [attr.aria-label]="i18n.t('languageSwitch')" (click)="i18n.toggle()">
+      {{ i18n.language() === 'en' ? i18n.t('switchToArabic') : i18n.t('switchToEnglish') }}
+    </button>
+  </div>
+</header>

@@ -1,0 +1,8 @@
+@use '../abstracts' as *;
+
+:root {
+  color: $ink;
+  font-family: $font-family;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}

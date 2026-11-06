@@ -1,0 +1,18 @@
+<section class="details" aria-labelledby="quotation-details-title">
+  @if (quotation; as selectedQuotation) {
+    <div class="details__header">
+      <div><p class="eyebrow">{{ i18n.t('selectedQuotation') }}</p><h2 id="quotation-details-title">{{ selectedQuotation.id }}</h2></div>
+      <span class="status" [class.status--expired]="selectedQuotation.status === 'Expired'">{{ selectedQuotation.status === 'Available' ? i18n.t('available') : i18n.t('expired') }}</span>
+    </div>
+    <div class="details__customer"><span class="avatar">{{ (i18n.language() === 'ar' ? selectedQuotation.customerNameAr : selectedQuotation.customerName).charAt(0) }}</span><div><strong>{{ i18n.language() === 'ar' ? selectedQuotation.customerNameAr : selectedQuotation.customerName }}</strong><span>{{ selectedQuotation.insuranceCompany }}</span></div></div>
+    <div class="details__hero"><span>{{ i18n.t('premiumValue') }}</span><strong>{{ selectedQuotation.premiumSar | number }} <small>SAR</small></strong><p>{{ i18n.t('today') }} · {{ selectedQuotation.issuedOn }}</p></div>
+    <dl class="details__grid">
+      <div><dt>{{ i18n.t('deductible') }}</dt><dd>{{ selectedQuotation.deductibleSar | number }} SAR</dd></div>
+      <div><dt>{{ i18n.t('vehicle') }}</dt><dd>{{ selectedQuotation.vehicle }}</dd></div>
+      <div><dt>{{ i18n.t('coverage') }}</dt><dd>{{ selectedQuotation.coverage === 'Comprehensive' ? i18n.t('comprehensive') : i18n.t('thirdParty') }}</dd></div>
+      <div><dt>{{ i18n.t('insurer') }}</dt><dd>{{ selectedQuotation.insuranceCompany }}</dd></div>
+    </dl>
+  } @else {
+    <div class="details__empty"><span class="details__empty-icon" aria-hidden="true">⌁</span><h2 id="quotation-details-title">{{ i18n.t('selectQuotation') }}</h2><p>{{ i18n.t('selectionHint') }}</p></div>
+  }
+</section>

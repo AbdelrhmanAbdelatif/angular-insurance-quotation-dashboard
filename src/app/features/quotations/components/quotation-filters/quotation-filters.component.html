@@ -1,0 +1,48 @@
+<!-- <section class="filters" aria-labelledby="quotation-filters-title">
+  <h2 id="quotation-filters-title">{{ i18n.t('refineResults') }}</h2>
+  <label>
+    <span>{{ i18n.t('status') }}</span>
+    <select [value]="status" (change)="statusChange.emit($any($event.target).value)">
+      <option value="all">{{ i18n.t('allStatuses') }}</option>
+      <option value="Available">{{ i18n.t('available') }}</option>
+      <option value="Expired">{{ i18n.t('expired') }}</option>
+    </select>
+  </label>
+  <label>
+    <span>{{ i18n.t('premium') }}</span>
+    <select [value]="premiumSort" (change)="premiumSortChange.emit($any($event.target).value)">
+      <option value="asc">{{ i18n.t('lowestFirst') }}</option>
+      <option value="desc">{{ i18n.t('highestFirst') }}</option>
+    </select>
+  </label>
+</section> -->
+
+
+<section class="filters" aria-labelledby="quotation-filters-title">
+  <h2 id="quotation-filters-title">{{ i18n.t('refineResults') }}</h2>
+
+  <label>
+    <span>{{ i18n.t('status') }}</span>
+    <div class="select-wrapper">
+      <select [value]="status"
+        (change)="statusChange.emit($any($event.target).value)">
+        <option value="all">{{ i18n.t('allStatuses') }}</option>
+        <option value="Available">{{ i18n.t('available') }}</option>
+        <option value="Expired">{{ i18n.t('expired') }}</option>
+      </select>
+      <span class="select-arrow"></span>
+    </div>
+  </label>
+
+  <label>
+    <span>{{ i18n.t('premium') }}</span>
+    <div class="select-wrapper">
+      <select [value]="premiumSort"
+        (change)="premiumSortChange.emit($any($event.target).value)">
+        <option value="asc">{{ i18n.t('lowestFirst') }}</option>
+        <option value="desc">{{ i18n.t('highestFirst') }}</option>
+      </select>
+      <span class="select-arrow"></span>
+    </div>
+  </label>
+</section>

@@ -1,0 +1,4 @@
+// Single global Sass entry point. Every layer is loaded with modern Sass modules.
+@use './styles/base/reset';
+@use './styles/base/typography';
+@use './styles/layout/shell';

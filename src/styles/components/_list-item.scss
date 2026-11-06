@@ -1,0 +1,83 @@
+@use '../abstracts' as *;
+
+.quotation-card {
+  width: 100%;
+  display: grid;
+  gap: $space-1;
+  text-align: left;
+  border: 1px solid $line;
+  border-radius: $radius-md;
+  background: $surface;
+  color: $ink;
+  padding: $space-5;
+  cursor: pointer;
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+
+  &:hover {
+    border-color: rgba(0, 166, 166, .55);
+    transform: translateY(-1px);
+  }
+
+  &--selected {
+    border-color: $brand-teal;
+    box-shadow: 0 0 0 3px rgba(0, 166, 166, .12);
+  }
+
+  &__topline,
+  &__metrics {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  strong {
+    color: $brand-navy;
+    font-size: .8rem;
+    letter-spacing: .04em;
+  }
+
+  &__name {
+    font-size: .98rem;
+    font-weight: 750;
+  }
+
+  &__company {
+    color: $muted;
+    font-size: $font-size-xs;
+  }
+
+  &__metrics {
+    border-top: 1px solid $line;
+    margin-top: $space-1;
+    padding-top: $space-3;
+
+    span {
+      display: grid;
+      gap: .12rem;
+    }
+  }
+
+  small {
+    color: $muted;
+    font-size: .67rem;
+  }
+
+  b {
+    font-size: .76rem;
+  }
+}
+
+.status {
+  border-radius: $radius-pill;
+  background: $success-soft;
+  color: $success;
+  padding: .25rem $space-2;
+  font-size: .65rem;
+  font-weight: $font-weight-bold;
+
+  &--expired {
+    background: $warning-soft;
+    color: $warning;
+  }
+}

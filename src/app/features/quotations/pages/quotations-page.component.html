@@ -1,0 +1,55 @@
+<main class="dashboard-shell">
+  <app-header />
+  <!-- Hero content gives the support representative context before the operational workspace. -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__copy">
+      <p class="eyebrow">{{ i18n.t('heroEyebrow') }}</p>
+      <h1 id="hero-title">{{ i18n.t('heroTitle') }}</h1>
+      <p class="hero__description">{{ i18n.t('heroDescription') }}</p>
+      <!-- <div class="hero__actions">
+        <a class="hero__primary" href="#quotation-workspace">{{ i18n.t('heroPrimaryAction') }} <span aria-hidden="true">↗</span></a>
+        <button class="hero__secondary" type="button" (click)="clearSearch()">{{ i18n.t('heroSecondaryAction') }}</button>
+      </div> -->
+    </div>
+    <div class="hero__summary" aria-label="Workspace summary">
+      <p>{{ i18n.t('heroStatSubtitle') }}</p>
+      <div class="summary-grid">
+        <div><strong>{{ store.totalCount() }}</strong><span>{{ i18n.t('heroStatQuotations') }}</span></div>
+        <div><strong>{{ store.availableCount() }}</strong><span>{{ i18n.t('heroStatAvailable') }}</span></div>
+        <div><strong>{{ store.averagePremium() | number }} <small>SAR</small></strong><span>{{ i18n.t('heroStatAvgPremium') }}</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-heading">
+    <div><p class="eyebrow">{{ i18n.t('customerSupport') }}</p><h2>{{ i18n.t('dashboardTitle') }}</h2><p class="page-heading__description">{{ i18n.t('dashboardDescription') }}</p></div>
+    <div class="page-heading__date"><span class="calendar-icon" aria-hidden="true">▣</span><span><small>{{ i18n.t('today') }}</small><strong>{{ i18n.t('date') }}</strong></span></div>
+  </section>
+
+  <section id="quotation-workspace" class="workspace-card" [attr.aria-label]="i18n.t('dashboardTitle')">
+    <aside class="controls-panel">
+      <div class="controls-panel__intro"><span class="section-number">01</span><div><h3>{{ i18n.t('findQuotation') }}</h3><p>{{ i18n.t('findQuotationDescription') }}</p></div></div>
+      <app-quotation-search [value]="store.query().searchTerm" (valueChange)="store.search($event)" />
+      <app-quotation-filters
+        [status]="store.query().status"
+        [premiumSort]="store.query().premiumSort"
+        (statusChange)="store.setStatus($event)"
+        (premiumSortChange)="store.setPremiumSort($event)"
+      />
+      <div class="tip"><span aria-hidden="true">✦</span><p><strong>{{ i18n.t('quickTip') }}</strong>{{ i18n.t('quickTipText') }}</p></div>
+    </aside>
+
+    <section class="results-panel">
+      <app-quotation-request-state [state]="store.requestState()" [empty]="store.isEmpty()" (retry)="store.retry()" />
+      @if (store.requestState().status === 'success' && !store.isEmpty()) {
+        <app-quotation-list [quotations]="store.quotations()" [selectedId]="store.selectedQuotationId()" (quotationSelected)="store.selectQuotation($event)" />
+      }
+    </section>
+
+    <aside class="details-panel" [attr.aria-label]="i18n.t('selectedQuotation')">
+      <app-quotation-details [quotation]="store.selectedQuotation()" />
+    </aside>
+  </section>
+
+  <app-footer />
+</main>

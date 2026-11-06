@@ -1,0 +1,65 @@
+@use '../abstracts' as *;
+
+.search {
+  display: grid;
+  gap: $space-2;
+
+  &__label-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: $space-5;
+  }
+
+  label {
+    color: $ink;
+    font-size: .85rem;
+    font-weight: 750;
+  }
+
+  &__label-row span {
+    color: $muted;
+    font-size: $font-size-xs;
+  }
+
+  &__input-wrap {
+    position: relative;
+  }
+
+  &__icon {
+    position: absolute;
+    left: $space-5;
+    top: 50%;
+    transform: translateY(-53%);
+    color: $brand-teal;
+    font-size: 1.35rem;
+  }
+
+  input {
+    width: 100%;
+    border: 1px solid $line;
+    border-radius: $radius-md;
+    background: $surface;
+    color: $ink;
+    padding: .86rem $space-5 .86rem 2.7rem;
+    font: inherit;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+
+    &:focus {
+      @include focus-ring;
+    }
+  }
+}
+
+:root[dir='rtl'] .search {
+  &__icon {
+    right: $space-5;
+    left: auto;
+  }
+
+  input {
+    padding-right: 2.7rem;
+    padding-left: $space-5;
+  }
+}

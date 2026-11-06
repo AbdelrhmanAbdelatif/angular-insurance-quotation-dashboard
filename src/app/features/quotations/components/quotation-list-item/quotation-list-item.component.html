@@ -1,0 +1,12 @@
+<button class="quotation-card" type="button" [class.quotation-card--selected]="selected" (click)="selectedChange.emit(quotation.id)">
+  <span class="quotation-card__topline">
+    <strong>{{ quotation.id }}</strong>
+    <span class="status" [class.status--expired]="quotation.status === 'Expired'">{{ quotation.status === 'Available' ? i18n.t('available') : i18n.t('expired') }}</span>
+  </span>
+  <span class="quotation-card__name">{{ i18n.language() === 'ar' ? quotation.customerNameAr : quotation.customerName }}</span>
+  <span class="quotation-card__company">{{ quotation.insuranceCompany }}</span>
+  <span class="quotation-card__metrics">
+    <span><small>{{ i18n.t('premiumValue') }}</small><b>{{ quotation.premiumSar | number }} SAR</b></span>
+    <span><small>{{ i18n.t('deductible') }}</small><b>{{ quotation.deductibleSar | number }} SAR</b></span>
+  </span>
+</button>

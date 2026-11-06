@@ -1,0 +1,50 @@
+// Central design tokens. Components consume these Sass variables through @use.
+$page: #f7faf9;
+$surface: #ffffff;
+$ink: #163342;
+$brand-navy: #063b55;
+$brand-teal: #00a6a6;
+$brand-lime: #b5d332;
+$brand-soft: #e7f5f3;
+$muted: #71818a;
+$line: #e2ebeb;
+$success: #2b8a63;
+$success-soft: #e7f6ee;
+$warning: #a86b18;
+$warning-soft: #fff3dc;
+$error-border: #ffd9d0;
+$error-surface: #fff9f7;
+$error-soft: #ffe8e2;
+$error: #b9452e;
+$spinner-track: #cfe7e7;
+$header-footer-bg: #096574;
+
+$font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+$font-size-xs: .68rem;
+$font-size-sm: .75rem;
+$font-size-md: .9rem;
+$font-size-lg: 1.18rem;
+$font-weight-semibold: 700;
+$font-weight-bold: 800;
+$font-weight-heavy: 850;
+
+$space-1: .35rem;
+$space-2: .5rem;
+$space-3: .65rem;
+$space-4: .75rem;
+$space-5: 1rem;
+$space-6: 1.25rem;
+$space-7: 1.7rem;
+$space-8: 2rem;
+$space-9: 2.5rem;
+
+$radius-sm: .65rem;
+$radius-md: .85rem;
+$radius-lg: 1rem;
+$radius-xl: 1.15rem;
+$radius-pill: 999px;
+$shadow-card: 0 18px 50px rgba(4, 47, 68, .07);
+$shadow-hero: 0 20px 45px rgba(6, 59, 85, .18);
+
+$breakpoint-mobile: 700px;
+$breakpoint-tablet: 1080px;
