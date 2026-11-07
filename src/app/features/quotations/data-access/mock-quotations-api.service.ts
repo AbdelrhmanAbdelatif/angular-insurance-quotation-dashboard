@@ -5,9 +5,12 @@ import { Quotation } from '../models/quotation.model';
 import { QuotationQuery } from '../models/quotation-query.model';
 import { QuotationsApi } from './quotations-api.service';
 
-@Injectable()
+// Injectable allows Angular to create and inject this service.
+@Injectable() 
 export class MockQuotationsApiService implements QuotationsApi {
   // The in-memory records make the assessment deterministic and keep a backend out of scope.
+  // Fake quotation records stored in memory.
+  // readonly prevents reassignment of the array property.
   private readonly quotations: readonly Quotation[] = [
     {
       id: 'QT-1',
@@ -106,29 +109,46 @@ export class MockQuotationsApiService implements QuotationsApi {
       issuedOn: '10 Aug 2025',
     },
   ];
+  // Stores how many times a specific retry scenario has been attempted.
+  // Used to simulate a failed first request and successful next request.
   private readonly retryAttempts = new Map<string, number>();
 
+  // Accepts search parameters and returns an Observable of quotations.
   search(query: QuotationQuery): Observable<readonly Quotation[]> {
     // defer starts latency and scenario evaluation per subscription, which makes retry realistic.
+    // Remove surrounding spaces and convert the search text to lowercase.
     const term = query.searchTerm.trim().toLowerCase();
+     // Select the correct customer name property based on the language.
     const customerName = query.searchLanguage === 'ar' ? 'customerNameAr' : 'customerName';
+    // Simulate different API response times for testing loading states.
     const latency = term.includes('slow') ? 900 : term.includes('fast') ? 120 : 320;
-
-    return defer(() => timer(latency).pipe(
+    // defer delays Observable creation until subscription.
+    // Each subscription executes the request logic again.
+    return defer(() => 
+      // Simulate backend response time.
+      timer(latency).pipe(
+        // After the timer emits, execute the request logic.
       switchMap(() => {
+        // Scenario 1: Always return an error for the word "error".
         if (term === 'error') {
           return throwError(() => new Error('The quotation service is temporarily unavailable.'));
         }
-
+        // Scenario 2: Fail only the first request for "retry".
         if (term === 'retry' && (this.retryAttempts.get(term) ?? 0) === 0) {
+          // Record that the first attempt has happened.
           this.retryAttempts.set(term, 1);
+           // Simulate a failed API request.
           return throwError(() => new Error('The first retry scenario request failed.'));
         }
-
+        // Convert the in-memory quotation array into an Observable.
         return of(this.quotations).pipe(
+          // Transform the emitted array by filtering matching records.
           map((quotations) => quotations.filter((quotation) =>
+            // Return all records if the search input is empty.
             term.length === 0 ||
+             // Match the quotation ID.
             quotation.id.toLowerCase().includes(term) ||
+            // Match the customer name in the selected language.
             quotation[customerName].toLowerCase().includes(term),
           )),
         );
